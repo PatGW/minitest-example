@@ -1,6 +1,6 @@
 class Station
 
-  # attr_reader :working_bikes, :broken_bikes
+    CAPACITY = 20
 
   def initialize
     @bikes = []
@@ -10,41 +10,29 @@ class Station
     @bikes.count
   end
 
-
   def receive_bike(bike)
-     @bikes << bike
+    if space_available? 
+      @bikes << bike
+    else
+      raise "No room for Bikes at Station"
+    end
   end
 
-  def release_bike(bike)  
+  def release_bike(bike)
     @bikes.pop
   end
 
   def working_bikes_count
-    working_bikes =  @bikes.select {|bike| bike.broken? == false}
-    working_bikes.count
+    @bikes.count {|bike| !bike.broken? }
   end
 
   def broken_bikes_count
-    broken_bikes = @bikes.select { |bike| bike.broken? }
-    puts broken_bikes.inspect
-    puts broken_bikes.count
-    broken_bikes.count
+    @bikes.count { |bike| bike.broken? }
+  end
+
+  private
+
+  def space_available?
+    @bikes.count < CAPACITY
   end
 end
-
-
-
-# def release_bikes(bike_state)
-#   if bike_state = "broken"
-#     @broken_bikes.first
-#   else
-#     bike_state = "Not Broken"
-#     @working_bikes.first
-#   end
-# end
-
-    # if bike.broken?
-    #   @broken_bikes << bike
-    # elsif !bike.broken?
-    #   @working_bikes << bike
-    # end 

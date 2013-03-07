@@ -10,6 +10,7 @@ class TestBike < MiniTest::Unit::TestCase
   end
 
   def test_bike_is_not_broken_by_default
+    raise "please rewrite this line using refute"
     assert @bike.broken? == false 
   end
 
@@ -17,11 +18,4 @@ class TestBike < MiniTest::Unit::TestCase
     @bike.break!    
     assert @bike.broken?
   end
-
-private
-  
-  def helper
-    raise "whatever"
-  end
-
 end
