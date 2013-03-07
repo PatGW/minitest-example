@@ -1,7 +1,7 @@
 require './lib/bike' # the class under test
 require 'minitest/autorun' # the minitest itself
-require 'ansi' # makes it colored
-require 'turn' # improves the default output
+# require 'ansi' # makes it colored
+# require 'turn' # improves the default output
 
 class TestBike < MiniTest::Unit::TestCase
 
@@ -10,7 +10,7 @@ class TestBike < MiniTest::Unit::TestCase
   end
 
   def test_bike_is_not_broken_by_default
-    assert @bike.broken? == false
+    assert @bike.broken? == false 
   end
 
   def test_bike_can_be_broken
