@@ -13,20 +13,20 @@ class TestGarage < MiniTest::Unit::TestCase
   end
 
   def test_garage_can_receive_bike
-    @garage.receive_bike(@bike)
-    assert_equal(1, @garage.count_bikes_in_garage)
+    @garage<<(@bike)
+    assert_equal(1, @garage.count_bikes)
   end
 
   def test_garage_can_release_bike
-    @garage.receive_bike(@bike)
+    @garage<<(@bike)
     @garage.release_bike(@bike)
-    assert @garage.count_bikes_in_garage == 0
+    assert @garage.count_bikes == 0
   end
 
   def test_garage_capacity_returns_false_once_reached
-    Garage::CAPACITY.times { @garage.receive_bike(Bike.new)}
+    Garage::CAPACITY.times { @garage<<(Bike.new)}
     assert_raises(RuntimeError) {
-      @garage.receive_bike(Bike.new) 
+      @garage<<(Bike.new) 
     }
   end
 end

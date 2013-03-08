@@ -15,14 +15,14 @@ class TestStation < MiniTest::Unit::TestCase
   end
 
   def test_station_can_receive_a_bike
-    @station.receive_bike(@bike)
-    assert_equal 1, @station.count_bikes_in_station
+    @station<<(@bike)
+    assert_equal 1, @station.count_bikes
   end
 
   def test_station_can_release_a_bike
-    @station.receive_bike(@bike)
+    @station<<(@bike)
     @station.release_bike(@bike)
-    assert_equal( 0, @station.count_bikes_in_station)
+    assert_equal( 0, @station.count_bikes)
   end
 
   def test_station_has_working_bikes
@@ -37,14 +37,14 @@ class TestStation < MiniTest::Unit::TestCase
   end
 
   def test_station_limits_capacity
-    Station::CAPACITY.times {@station.receive_bike(Bike.new)}
-    assert_raises(RuntimeError){@station.receive_bike(Bike.new) == false}
+    Station::CAPACITY.times {@station<<(Bike.new)}
+    assert_raises(RuntimeError){@station<<(Bike.new) == false}
   end
 
   private
 
   def add_bikes(station)
-    @bikes.each {|bike| station.receive_bike(bike)}
+    @bikes.each {|bike| station<<(bike)}
   end
 
   def break_bikes
