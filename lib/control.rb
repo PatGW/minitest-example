@@ -4,9 +4,17 @@ require './person'
 require './garage'
 require './station'
 
-person = Person.new
-van = Van.new
-bike = Bike.new
-garage = Garage.new
-station = Station.new
+Class Location
 
+  def <<(bike)
+     if space_available? 
+      @bikes << bike
+    else
+      raise "No room for Bikes at Garage"
+    end
+  end
+
+  def release_bike(bike)
+    @bikes.pop
+  end
+end
