@@ -12,8 +12,8 @@ class Person
     @bike != nil
   end
 
-  def return_bike(bike)
+  def return_bike(bike=nil)
     @bike = nil
-    # return bike
+    self
   end
 end

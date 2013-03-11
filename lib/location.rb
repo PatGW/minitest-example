@@ -1,7 +1,8 @@
 class Location
 
   CAPACITY = 20  
-
+  attr_reader :bikes
+  
   def initialize
     @bikes = []    
   end

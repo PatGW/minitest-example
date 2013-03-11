@@ -27,13 +27,13 @@ class TestStation < MiniTest::Unit::TestCase
 
   def test_station_has_working_bikes
     add_bikes(@station)
-    assert_equal(3, @station.working_bikes_count)
+    assert_equal(3, @station.working_bikes.count)
   end
 
   def test_station_has_broken_bikes
     break_bikes
     add_bikes(@station)
-    assert_equal(3, @station.broken_bikes_count)
+    assert_equal(3, @station.broken_bikes.count)
   end
 
   def test_station_limits_capacity

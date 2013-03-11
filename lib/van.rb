@@ -2,11 +2,16 @@ require './lib/location'
 
 class Van < Location
 
-  CAPACITY = 4
+  CAPACITY = 10
 
-  def initialize
-    @bikes = []
-  end
+
+  # def working_bikes
+  #   @bikes.select { |bike| !bike.broken? }
+  # end
+
+  # def broken_bikes
+  #   @bikes.select { |bike| bike.broken? }
+  # end
 
   private
   
