@@ -45,7 +45,8 @@ class TestBorisBikes < MiniTest::Unit::TestCase
   end
 
   def test_van_moves_bikes_from_station_to_garage_when_there_are_fixed_bikes_at_the_garage
-
+    #take items in garage check if they are fixed and if so then put them in the van and
+    #send them to the station
   end
 
   def test_van_moves_bikes_from_station_to_garage_when_there_are_fixed_bikes_at_the_garage
@@ -65,7 +66,7 @@ class TestBorisBikes < MiniTest::Unit::TestCase
   end
 
   def test_stations_with_bikes_are_created
-
+    refute @boris_bike.stations.first.count_bikes == nil
   end
 
   def test_people_are_created
