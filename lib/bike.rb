@@ -3,6 +3,7 @@ class Bike
   include DataMapper::Resource
 
   property :id,         Serial    # An auto-increment integer key
+  property :broken,     Boolean
   # property :borrower, 
   # property :broken,
 
@@ -16,8 +17,7 @@ class Bike
   end
 
   def break!
-    @broken = true
-    self   
+    self.broken = true
   end
 
   def fix!

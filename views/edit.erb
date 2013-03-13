@@ -1,0 +1,10 @@
+<section id="edit"> 
+
+	<form action="/bikes/<%= @bike.id %>/edit" method="post">  
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Edit Bike!"> 
+    <input type="checkbox" name="broken" <%= "checked" if @bike.broken %>> 
+    <input type="submit">
+    </form>
+
+</section>  

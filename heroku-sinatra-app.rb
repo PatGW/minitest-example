@@ -5,7 +5,6 @@
 
 require 'bundler/setup'
 require 'sinatra'
-require 'sinatra/reloader' if development?
 require 'data_mapper'
 require 'dm-migrations'
 require './lib/bike.rb'
@@ -16,14 +15,40 @@ DataMapper.finalize
 
   get '/bikes' do
     @bikes = Bike.all 
-    erb :add_bike_form
+    erb :index
   end
+
+  put '/bikes' do
+    bike = Bike.get(params[:id])
+    bike.break!
+    erb :break_bike_form
+  end
+
+  get '/bikes/:id/edit' do
+    @bike = Bike.get(params[:id])
+    erb :edit
+  end
+
+   get '/bikes/:id/delete' do
+    @bike = Bike.get(params[:id])
+    erb :delete
+  end
+
+  put '/bikes/:id' do  
+  @bike = Bike.get(params[:id])   
+  erb :show  
+  end 
+
+
  
  post '/bikes' do   
-    b = Bike.new     
+    b = Bike.new
+    b.broken = false 
     b.save  
     redirect '/bikes'  
   end 
+
+
 
   
 

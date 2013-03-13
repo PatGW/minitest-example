@@ -1,0 +1,15 @@
+<section id="index"> 
+	<p>"You have <%= @bikes.count %> bikes"</p> 
+	<form action="/bikes" method="post">  
+    <!-- <textarea name="content"></textarea>  --> 
+    <input type="submit" value="Add Bike!">  
+    </form>
+
+   
+   <% @bikes.each do |bike| %> 
+   <p>"This is bike id number <%= bike.id %>"</p>
+   <p><span><a href="bikes/<%= bike.id %>/edit">[edit]</a></span></p>
+   <p><span><a href="bikes/<%= bike.id %>/delete">[delete]</a></span></p>
+   <% end %> 
+
+</section>  
