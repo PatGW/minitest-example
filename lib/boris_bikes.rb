@@ -1,9 +1,9 @@
 
-require './lib/person.rb'
-require './lib/bike.rb'
-require './lib/van.rb'
-require './lib/station.rb'
-require './lib/garage.rb'
+# require './lib/person.rb'
+# require './lib/bike.rb'
+# require './lib/van.rb'
+# require './lib/station.rb'
+# require './lib/garage.rb'
 
 class BorisBikes
 
